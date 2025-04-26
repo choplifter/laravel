@@ -6,15 +6,15 @@
 
         <div class="grid grid-cols-2  gap-4 rounded-xl">
 
-            <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+            <div class="md:col-span-1 col-span-2  relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 ">
                 
                 <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
 
 
                 <div
-                    class="lg:col-span-1 col-span-2 relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+                    class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
 
-                    <div class="container mx-auto px-4 py-8">
+                    <div class="container mx-auto px-4 py-8  ">
 
 
                         <x-placeholder-pattern
@@ -63,13 +63,14 @@
                     </div>
                 </div>
             </div>
+  
 
-            <div class="relative  h-auto overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern
-                    class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
-            </div>
-
- 
-
-            </div>
-        </div>
+                <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+                    <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+                </div>
+                <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+                    <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+                </div>
+            
+    </div>
+</div>
