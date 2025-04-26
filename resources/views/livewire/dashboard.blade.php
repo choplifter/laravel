@@ -12,7 +12,7 @@
 
 
                 <div
-                    class="lg:col-span-1 col-span-2 relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+                    class="lg:col-span-1 col-span-2 relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
 
                     <div class="container mx-auto px-4 py-8">
 
