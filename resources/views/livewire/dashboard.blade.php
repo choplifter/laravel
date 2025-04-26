@@ -16,9 +16,6 @@
 
                     <div class="container mx-auto px-4 py-8  ">
 
-
-                        <x-placeholder-pattern
-                            class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
                         <div class="flex flex-col gap-6  ">
                             <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
 
@@ -63,9 +60,18 @@
                     </div>
                 </div>
             </div>
-  
-            <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+            <div class="container mx-auto px-4 py-8  ">
+                <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 ">
+                    <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+                    <x-auth-header :title="__('Registher with Tesla')" :description="__('Click link below to log in')" />
+                    
+                    <flux:button
+                    href="https://tesla.com/_ak/ev-proxy.com"
+                    icon:trailing="arrow-up-right"
+                >
+                    Register with Tesla App
+                </flux:button>
+                </div>
             </div>
 
                 @for ($i = 0; $i < 4; $i++)
