@@ -66,7 +66,7 @@
                     <x-auth-header :title="__('Registher with Tesla')" :description="__('Click link below to log in')" />
                     
                     <flux:button
-                    href="https://tesla.com/_ak/ev-proxy.com"
+                    href="https://tesla.com/_ak/kindlbacher.de"
                     icon:trailing="arrow-up-right"
                 >
                     Register with Tesla App
