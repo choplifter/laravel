@@ -11,6 +11,11 @@ Volt::route('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Volt::route('forward', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
