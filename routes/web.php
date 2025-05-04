@@ -64,39 +64,22 @@ Volt::route('dashboard', 'dashboard')
                     return redirect()->route('dashboard');
                 } else {
                     // Handle error in user data retrieval
+                    return redirect()->route('home')->with('error', 'Failed to retrieve user data from Tesla. Please try again.');
                 }
             } else {
                 // Handle error in token request
                 $error = $response->json('error');
                 $errorDescription = $response->json('error_description');
+
+                return redirect()->route('home')->with('error', "Token request failed: $error - $errorDescription");
+
                 // Log or display the error as needed
             }
         } else {
-            // Handle the case where the code is not present in the request
-            // You can redirect to an error page or show a message
-            // For example, redirect to the home page
-            // return redirect()->route('home');
-            // Or you can handle the login code here
-            // Example: Check if the user is already logged in
-            // if (auth()->check()) {
-            //     return redirect()->route('dashboard');
-            // }
-            // If the user is not logged in, you can redirect them to the login page
-            // return redirect()->route('login');
-            // Or you can handle the login code here
-            // Example: Check if the user is already logged in                                  
-
-
-
-            // Example: Find user by code and log them in
-            //$user = \App\Models\User::where('login_code', $code)->first();
-            //if ($user) {
-            //    \Illuminate\Support\Facades\Auth::login($user);
-            //    return redirect()->route('dashboard');
-            //}
+            return redirect()->route('home')->with('error', 'Authorization code not found. Please try again.');
         }
 
-        return redirect()->route('home');
+        
     });
 
 Route::middleware(['auth'])->group(function () {
