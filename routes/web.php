@@ -26,14 +26,16 @@ Volt::route('dashboard', 'dashboard')
             $redirectUri = env('TESLA_CALLBACK');
             $tokenUrl = 'https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token';
 
-            $response = Http::asForm()->post($tokenUrl, [
+            $data = [
                 'grant_type' => 'authorization_code',
                 'client_id' => $clientId,
                 'client_secret' => $clientSecret,
                 'code' => $code,
                 'audience' => $audience,
                 'redirect_uri' => $redirectUri,
-            ]);
+            ];
+            info('Posting to Auth: ' . json_encode($data));
+            $response = Http::asForm()->post($tokenUrl, $data);
             info('Auth Response: ' . $response->body());
 
             if ($response->successful()) {
