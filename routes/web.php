@@ -56,11 +56,12 @@ Volt::route('dashboard', 'dashboard')
                     // Process user data as needed
                     // For example, you can create or update a user in your database
                     $user = \App\Models\User::updateOrCreate(
-                        ['email' => $userData['email']],
+                       
                         [
-                            'name' => $userData['name'],
-                            'appkey' => $accessToken,
-                            'password' => bcrypt($refreshToken),
+                            ['email' => $userData['response.email']],     
+                            ['name' => $userData['response.name']],
+                            //'appkey' => $accessToken,
+                            //'password' => bcrypt($refreshToken),
                         ]
                     );
             
