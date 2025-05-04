@@ -15,12 +15,10 @@ Volt::route('dashboard', 'dashboard')
 
     Route::get('forward', function (\Illuminate\Http\Request $request) {
 
-        Debugbar::info($request->all());
-
         $code = $request->query('code');
         if ($code) {
             # Authorization code token request
-
+            info('Code received: ' . $code);
             // Replace these with your actual values
             $clientId = env('TESLA_CLIENT_ID');
             $clientSecret = env('TESLA_CLIENT_SECRET');
@@ -36,6 +34,7 @@ Volt::route('dashboard', 'dashboard')
                 'audience' => $audience,
                 'redirect_uri' => $redirectUri,
             ]);
+            info('Auth Response: ' . $response->body());
 
             if ($response->successful()) {
                 $accessToken = $response->json('access_token');
@@ -44,7 +43,9 @@ Volt::route('dashboard', 'dashboard')
             
                 $userResponse = Http::withToken($accessToken)
                     ->get('https://fleet-api.prd.eu.vn.cloud.tesla.com/api/1/users/me');
-            
+                
+                info('User Response: ' . $userResponse->body());
+
                 if ($userResponse->successful()) {
                     $userData = $userResponse->json();
                     // Process user data as needed
