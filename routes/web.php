@@ -23,7 +23,7 @@ Volt::route('dashboard', 'dashboard')
             $clientId = env('TESLA_CLIENT_ID');
             $clientSecret = env('TESLA_CLIENT_SECRET');
             $audience = env('TESLA_AUDIENCE');
-            $redirectUri = urlencode(env('TESLA_CALLBACK'));
+            $redirectUri = env('TESLA_CALLBACK');
             $tokenUrl ='https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token';
 
             $data = [
