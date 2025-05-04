@@ -6,86 +6,17 @@
 
         <div class="grid grid-cols-2  gap-4 rounded-xl">
 
-            <div
-                class="md:col-span-1 col-span-2  relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 ">
 
-                <x-placeholder-pattern
-                    class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
-
-
-                <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-
-                    <div class="container mx-auto px-4 py-8  ">
-
-                        <div class="flex flex-col gap-6  ">
-                            <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
-
-                            <!-- Session Status -->
-                            <x-auth-session-status class="text-center" :status="session('status')" />
-
-                            <form wire:submit="login" class="flex flex-col gap-6">
-                                <!-- Email Address -->
-                                <flux:input wire:model="email" :label="__('Email address')" type="email" required
-                                    autofocus autocomplete="email" placeholder="email@example.com" />
-
-                                <!-- Password -->
-                                <div class="relative">
-                                    <flux:input wire:model="password" :label="__('Password')" type="password" required
-                                        autocomplete="current-password" :placeholder="__('Password')" />
-
-                                    @if (Route::has('password.request'))
-                                        <flux:link class="absolute end-0 top-0 text-sm"
-                                            :href="route('password.request')" wire:navigate>
-                                            {{ __('Forgot your password?') }}
-                                        </flux:link>
-                                    @endif
-                                </div>
-
-                                <!-- Remember Me -->
-                                <flux:checkbox wire:model="remember" :label="__('Remember me')" />
-
-
-                                <flux:button variant="primary" type="submit" class="w-full">{{ __('Log in') }}
-                                </flux:button>
-
-                            </form>
-
-                            @if (Route::has('register'))
-                                <div
-                                    class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
-                                    {{ __('Don\'t have an account?') }}
-                                    <flux:link :href="route('register')" wire:navigate>{{ __('Sign up') }}</flux:link>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container mx-auto px-4 py-8  ">
+            <div class="container mx-auto px-4 py-8  col-span-2">
                 <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 ">
 
                     <x-placeholder-pattern
                         class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
 
-                    <x-auth-header :title="__('Registher with Tesla')" :description="__('Click link below to log in')" />
+                    <x-auth-header :title="__('Welcome to chargerproxy.com!')" :description="__('Follow the steps')" />
 
 
-                    <div class="flex items-center justify-end">
-                        <flux:button
-                            href="https://auth.tesla.com/oauth2/v3/authorize?&client_id=98722a54-fe41-45b9-a2df-5ccba1bb8ded&locale=en-US&prompt=login&redirect_uri=https://kindlbacher.de/forward&response_type=code&scope=openid%20vehicle_device_data%20offline_access%20vehicle_cmds%20vehicle_charging_cmds&state=db4af3f87"
-                            icon:trailing="arrow-up-right">
-                            Login to tesla
-                        </flux:button>
-                    </div>
 
-                    <x-auth-header :title="__('Registher with Tesla')" :description="__('Click link below to log in')" />
-
-
-                    <div class="flex items-center justify-end">
-                        <flux:button href="https://tesla.com/_ak/kindlbacher.de" icon:trailing="arrow-up-right">
-                            Register with Tesla App
-                        </flux:button>
-                    </div>
                 </div>
             </div>
 

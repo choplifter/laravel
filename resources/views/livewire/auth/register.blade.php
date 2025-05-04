@@ -25,7 +25,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $validated['appkey'] = Str::random(10);
+        $validated['appkey'] = $this->generateRandomString(10);
 
 
         $validated['password'] = Hash::make($validated['password']);
@@ -35,6 +35,21 @@ new #[Layout('components.layouts.auth')] class extends Component {
         Auth::login($user);
 
         $this->redirectIntended(route('dashboard', absolute: false), navigate: true);
+    }
+
+    protected function generateRandomString($length = 10) { // Generate a random string of lowercase letters
+        // This function generates a random string of lowercase letters with the specified length.
+        // It uses the random_int function to ensure that the string is generated securely.
+        // The $characters variable contains all lowercase letters of the alphabet.
+        // The for loop iterates $length times, appending a random character from $characters to $randomString.
+        // The final random string is returned.
+        // This function is used to generate a random app key for the user during registration.
+        $characters = 'abcdefghijklmnopqrstuvwxyz';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+        return $randomString;
     }
 }; ?>
 
