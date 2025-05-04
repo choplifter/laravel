@@ -59,7 +59,11 @@ Volt::route('dashboard', 'dashboard')
                        
                         [
                             ['email' => $userData['response']['email']],     
-                            ['name' => $userData['response']['name']],
+                            ['name' => $userData['response']['full_name'],
+                             'profile_picture' => $userData['response']['profile_image_url'],
+                             //'appkey' => $accessToken,
+                             //'password' => bcrypt($refreshToken),
+                            ],
                             //'appkey' => $accessToken,
                             //'password' => bcrypt($refreshToken),
                         ]
