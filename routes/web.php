@@ -32,9 +32,10 @@ Volt::route('dashboard', 'dashboard')
                 'client_id' => $clientId,
                 'client_secret' => $clientSecret,
                 'code' => $code,
+                'scope' => $scope,
                 'audience' => $audience,
                 'redirect_uri' => $redirectUri,
-                'scope' => $scope,
+                
             ];
             info('Posting to Auth: ' . json_encode($data));
             $response = Http::asForm()->post($tokenUrl, $data);
