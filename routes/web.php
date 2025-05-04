@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -13,6 +14,9 @@ Volt::route('dashboard', 'dashboard')
 
 
     Route::get('forward', function (\Illuminate\Http\Request $request) {
+
+        Debugbar::info($request->all());
+
         $code = $request->query('code');
         if ($code) {
             # Authorization code token request

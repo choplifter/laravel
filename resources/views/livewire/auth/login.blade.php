@@ -81,11 +81,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
     <form wire:submit="login" class="flex flex-col gap-6">
         
-            <flux:button
+        <flux:button
                 href="https://auth.tesla.com/oauth2/v3/authorize?&client_id=98722a54-fe41-45b9-a2df-5ccba1bb8ded&locale=en-US&prompt=login&redirect_uri=https://kindlbacher.de/forward&response_type=code&scope=openid%20vehicle_device_data%20offline_access%20vehicle_cmds%20vehicle_charging_cmds&state=db4af3f87"
                 icon:trailing="arrow-up-right">
                 Login to tesla
-            </flux:button>
+        </flux:button>
         
         <!-- Email Address -->
         <flux:input
