@@ -52,14 +52,14 @@ Volt::route('dashboard', 'dashboard')
                 info('User Response: ' . $userResponse->body());
 
                 if ($userResponse->successful()) {
-                    $userData = $userResponse->json();
+                    $userData = $userResponse;
                     // Process user data as needed
                     // For example, you can create or update a user in your database
                     $user = \App\Models\User::updateOrCreate(
                        
                         [
-                            ['email' => $userData['response.email']],     
-                            ['name' => $userData['response.name']],
+                            ['email' => $userData['response']['email']],     
+                            ['name' => $userData['response']['name']],
                             //'appkey' => $accessToken,
                             //'password' => bcrypt($refreshToken),
                         ]
