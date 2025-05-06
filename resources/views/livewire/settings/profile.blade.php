@@ -19,6 +19,8 @@ new class extends Component {
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->appkey = Auth::user()->appkey;
+        $this->profile_picture = Auth::user()->profile_picture;
     }
 
     /**
