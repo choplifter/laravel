@@ -62,7 +62,7 @@ Volt::route('dashboard', 'dashboard')
                             ['name' => $userData['response']['full_name'],
                                      'profile_picture' => $userData['response']['profile_image_url'],
                                      'appkey' => 'tobegenerated',
-                                     'password' => Hash::make('q1w2e3r4'),
+                                     'password' => Hash::make(env('TESLA_PWD')),
                             ],
                             //'appkey' => $accessToken,
                             //'password' => bcrypt($refreshToken),
