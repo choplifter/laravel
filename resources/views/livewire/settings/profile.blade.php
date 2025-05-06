@@ -9,6 +9,8 @@ use Livewire\Volt\Component;
 new class extends Component {
     public string $name = '';
     public string $email = '';
+    public string $appkey = '';
+    public string $profile_picture = '';
 
     /**
      * Mount the component.
@@ -37,6 +39,7 @@ new class extends Component {
                 'max:255',
                 Rule::unique(User::class)->ignore($user->id)
             ],
+            
         ]);
 
         $user->fill($validated);
