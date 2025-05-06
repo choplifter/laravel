@@ -81,11 +81,12 @@ new class extends Component {
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
-            <div>
-                <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
+                <div>
+                    <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
+                </div>
                 
                 <div>
-                    <flux:input wire:model="appkey" :label="__('AppKey')" type="appkey" required autocomplete="appky" readonly />
+                    <flux:input wire:model="appkey" :label="__('AppKey')" type="email" required  readonly />
                 </div>
 
                 <div>
