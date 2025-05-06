@@ -84,11 +84,11 @@ new class extends Component {
             <div>
                 <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
                 
-                <div class="flex items-center gap-4">
+                <div>
                     <flux:input wire:model="appkey" :label="__('AppKey')" type="appkey" required autocomplete="appky" readonly />
                 </div>
 
-                <div class="flex items-center gap-4">
+                <div>
                     <flux:input wire:model="profile_picture" :label="__('Picture')" type="profile_picture" required autocomplete="profile_picture" readonly />
                 </div>
 
