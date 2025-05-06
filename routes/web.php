@@ -96,7 +96,7 @@ Volt::route('dashboard', 'dashboard')
     function emailToHashedLetters($email) {
         $hash = md5(strtolower($email)); // Generate hash
         $letters = preg_replace('/[^a-z]/', '', $hash); // Extract letters
-        return substr(str_pad($letters, 10, 'a'), 0, 10); // Ensure 10 chars
+        return 'app-'.substr(str_pad($letters, 10, 'a'), 0, 10); // Ensure 10 chars
     }
   
 Route::middleware(['auth'])->group(function () {
