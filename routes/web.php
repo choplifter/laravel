@@ -61,7 +61,7 @@ Volt::route('dashboard', 'dashboard')
                             ['email' => $userData['response']['email']],     
                             ['name' => $userData['response']['full_name'],
                                      'profile_picture' => $userData['response']['profile_image_url'],
-                                     'appkey' => 'tobegenerated',
+                                     'appkey' => emailToHashedLetters($userData['response']['email']),
                                      'password' => Hash::make(env('TESLA_PWD')),
                             ],
                             //'appkey' => $accessToken,
@@ -93,6 +93,12 @@ Volt::route('dashboard', 'dashboard')
         
     });
 
+    function emailToHashedLetters($email) {
+        $hash = md5(strtolower($email)); // Generate hash
+        $letters = preg_replace('/[^a-z]/', '', $hash); // Extract letters
+        return substr(str_pad($letters, 10, 'a'), 0, 10); // Ensure 10 chars
+    }
+  
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
