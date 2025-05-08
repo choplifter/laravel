@@ -13,9 +13,9 @@ new class extends Component {
     public string $profile_picture = '';
     public string|NULL $tesla_client_id = '';
     public string|NULL $tesla_client_secret = '';
-    public string $tesla_access_token = '';
-    public string $tesla_token_expires_at = '';
-    public string $tesla_refresh_token = '';
+    public string|NULL $tesla_access_token = '';
+    public string|NULL $tesla_token_expires_at = '';
+    public string|NULL $tesla_refresh_token = '';
 
 
     /**
