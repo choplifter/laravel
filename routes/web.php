@@ -66,7 +66,7 @@ Route::view('dashboard', 'dashboard')
                                      'password' => Hash::make(env('TESLA_PWD')),
                                      'tesla_refresh_token' => $refreshToken,
                                      'tesla_access_token' => $accessToken,
-                                     'token_expires_at' => now()->addSeconds($expiresIn),
+                                     'tesla_token_expires_at' => now()->addSeconds($expiresIn),
                                         
                             ],
                             //'appkey' => $accessToken,
