@@ -11,6 +11,12 @@ new class extends Component {
     public string $email = '';
     public string $appkey = '';
     public string $profile_picture = '';
+    public string $tesla_client_id = '';
+    public string $tesla_client_secret = '';
+    public string $tesla_access_token = '';
+    public string $tesla_token_expires_at = '';
+    public string $tesla_refresh_token = '';
+
 
     /**
      * Mount the component.
@@ -21,6 +27,12 @@ new class extends Component {
         $this->email = Auth::user()->email;
         $this->appkey = Auth::user()->appkey;
         $this->profile_picture = Auth::user()->profile_picture;
+        $this->tesla_client_id = Auth::user()->tesla_client_id;
+        $this->tesla_client_secret = Auth::user()->tesla_client_secret;
+        $this->tesla_access_token = Auth::user()->tesla_access_token;       
+        $this->tesla_token_expires_at = Auth::user()->tesla_token_expires_at;
+        $this->tesla_refresh_token = Auth::user()->tesla_refresh_token; 
+
     }
 
     /**
