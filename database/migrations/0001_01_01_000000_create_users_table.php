@@ -18,6 +18,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('appkey');
+            $table->string('tesla_access_token')->nullable();
+            $table->string('tesla_refresh_token')->nullable();
+            $table->string('tesla_token_expires_at')->nullable();
+            $table->string('tesla_client_id')->nullable();
+            $table->string('tesla_client_secret')->nullable();
             $table->text('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();

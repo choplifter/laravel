@@ -84,11 +84,21 @@ new class extends Component {
                 <div>
                     <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
                 </div>
-                
                 <div>
                     <flux:input wire:model="appkey" :label="__('AppKey')" type="email" required  readonly />
                 </div>
-
+                <div>
+                    <flux:input wire:model="tesla_client_id" :label="__('Client_id')" type="tesla_client_id" required  readonly />
+                </div>
+                <div>
+                    <flux:input wire:model="tesla_client_secret" :label="__('Client_secret')" type="tesla_client_secret" required  readonly />
+                </div>
+                <div>
+                    <flux:input wire:model="tesla_access_token" :label="__('Access_token')" type="tesla_access_token" required  readonly />
+                </div>
+                <div>
+                    <flux:input wire:model="tesla_refresh_token" :label="__('Refresh_token')" type="tesla_refresh_token" required  readonly />
+                </div>
                 <div>
                     <flux:input wire:model="profile_picture" :label="__('Picture')" type="profile_picture" required autocomplete="profile_picture" readonly />
                 </div>

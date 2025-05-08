@@ -24,6 +24,11 @@ class User extends Authenticatable
         'password',
         'appkey',
         'profile_picture',
+        'tesla_access_token',
+        'tesla_refresh_token',
+        'tesla_token_expires_at',
+        'tesla_client_id',
+        'tesla_client_secret',
     ];
 
     /**
