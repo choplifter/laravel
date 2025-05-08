@@ -63,6 +63,10 @@ Route::view('dashboard', 'dashboard')
                                      'profile_picture' => $userData['response']['profile_image_url'],
                                      'appkey' => emailToHashedLetters($userData['response']['email']),
                                      'password' => Hash::make(env('TESLA_PWD')),
+                                     'refresh_token' => $refreshToken,
+                                     'access_token' => $accessToken,
+                                     'token_expires_at' => now()->addSeconds($userData['response']['expires_in']),
+                                        
                             ],
                             //'appkey' => $accessToken,
                             //'password' => bcrypt($refreshToken),
