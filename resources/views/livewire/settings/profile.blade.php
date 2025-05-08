@@ -53,7 +53,10 @@ new class extends Component {
                 'max:255',
                 Rule::unique(User::class)->ignore($user->id)
             ],
-            
+ 
+            'tesla_client_id' => ['required', 'string', 'max:2550'],     
+            'tesla_client_secret' => ['required', 'string', 'max:2550'],  
+
         ]);
 
         $user->fill($validated);
@@ -89,7 +92,7 @@ new class extends Component {
 <section class="w-full">
     @include('partials.settings-heading')
 
-    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
+    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your profile')">
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
