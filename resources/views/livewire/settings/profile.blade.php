@@ -11,8 +11,8 @@ new class extends Component {
     public string $email = '';
     public string $appkey = '';
     public string $profile_picture = '';
-    public string $tesla_client_id|NULL = '';
-    public string $tesla_client_secret|NULL = '';
+    public string|NULL $tesla_client_id = '';
+    public string|NULL $tesla_client_secret = '';
     public string $tesla_access_token = '';
     public string $tesla_token_expires_at = '';
     public string $tesla_refresh_token = '';
