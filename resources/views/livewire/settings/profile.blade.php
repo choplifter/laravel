@@ -88,7 +88,7 @@ new class extends Component {
                     <flux:input wire:model="appkey" :label="__('AppKey')" type="email" required  readonly />
                 </div>
                 <div>
-                    <flux:input wire:model="tesla_client_id" :label="__('Client_id')" type="tesla_client_id" required  readonly />
+                    <flux:input wire:model="tesla_client_id" :label="__('Client_id')" type="tesla_client_id" required   />
                 </div>
                 <div>
                     <flux:input wire:model="tesla_client_secret" :label="__('Client_secret')" type="tesla_client_secret" required   />
