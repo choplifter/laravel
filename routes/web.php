@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Volt::route('dashboard', 'dashboard')
+Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -99,6 +99,7 @@ Volt::route('dashboard', 'dashboard')
         return 'app-'.substr(str_pad($letters, 10, 'a'), 0, 10); // Ensure 10 chars
     }
   
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
