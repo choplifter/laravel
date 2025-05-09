@@ -9,7 +9,7 @@
         @if(count($vehicles) > 0)
             @foreach($vehicles as $vehicle)
                 <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-4">
-                    <h2 class="font-semibold">{{ $vehicle['display_name'] }}</h2>
+                    <h2 class="font-semibold">{{ $vehicle['vin'] }}</h2>
                     <p>Status: <span>{{ $vehicle['state'] }}</span></p>
                     <p>Battery Level: {{ $vehicle['battery_level'] ?? 'N/A' }}%</p>
                     

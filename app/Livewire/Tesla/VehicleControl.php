@@ -29,6 +29,19 @@ class VehicleControl extends Component
         } else {
             $this->showError("Failed to fetch vehicles: " . $response->json('error', 'Unknown error'));
         }
+        foreach ($this->vehicles as &$vehicle) {
+            $vehicleTag = $vehicle['vin'] ?? null;
+            if ($vehicleTag) {
+                $vehicleDataResponse = Http::withToken($token)
+                    ->get("{$this->baseUrl}/vehicles/{$vehicleTag}/vehicle_data");
+                
+                if ($vehicleDataResponse->successful()) {
+                    $vehicle['data'] = $vehicleDataResponse->json('response', []);
+                } else {
+                    $vehicle['data'] = ['error' => $vehicleDataResponse->json('error', 'Unknown error')];
+                }
+            }
+        }
     }
     
     public function sendCommand($vehicleId, $command)
