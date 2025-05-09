@@ -103,7 +103,7 @@ new class extends Component {
                     <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
                 </div>
                 <div>
-                    <flux:input wire:model="appkey" :label="__('AppKey')" type="email" required   />
+                    <flux:input wire:model="appkey" :label="__('AppKey')"  required   />
                 </div>
                 <div>
                     <flux:input wire:model="tesla_client_id" :label="__('Client_id')" type="tesla_client_id" required   />
