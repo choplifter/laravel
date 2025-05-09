@@ -13,7 +13,7 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 
-    Route::get('forward', function (\Illuminate\Http\Request $request) {
+Route::get('forward', function (\Illuminate\Http\Request $request) {
 
         $code = $request->query('code');
         if ($code) {
