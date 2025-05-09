@@ -19,22 +19,22 @@
                             Wake Up
                         </button>
                         
-                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', '/command/door_unlock')" 
+                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', 'command/door_unlock')" 
                                 class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600">
                             Unlock
                         </button>
                         
-                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', '/command/door_lock')" 
+                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', 'command/door_lock')" 
                                 class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
                             Lock
                         </button>
                         
-                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', '/command/honk_horn')" 
+                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', 'command/honk_horn')" 
                                 class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
                             Honk
                         </button>
                         
-                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', '/command/flash_lights')" 
+                        <button wire:click="sendCommand('{{ $vehicle['vin'] }}', 'command/flash_lights')" 
                                 class="px-3 py-1 bg-purple-500 text-white rounded hover:bg-purple-600">
                             Flash Lights
                         </button>
