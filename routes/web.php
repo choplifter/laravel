@@ -56,7 +56,7 @@ Route::view('dashboard', 'dashboard')
                     $userData = $userResponse;
                     // Process user data as needed
                     // For example, you can create or update a user in your database
-                    /*
+                    
                        $user = \App\Models\User::updateOrCreate(
                        
                         
@@ -74,17 +74,8 @@ Route::view('dashboard', 'dashboard')
                             //'password' => bcrypt($refreshToken),
                         
                     );
-                    */
-                    $user->fill([
-                        'email' => $userData['response']['email'],
-                        'name' => $userData['response']['full_name'],
-                        'profile_picture' => $userData['response']['profile_image_url'],
-                        'appkey' => emailToHashedLetters($userData['response']['email']),
-                        'password' => Hash::make(env('TESLA_PWD')),
-                        'tesla_refresh_token' => $refreshToken,
-                        'tesla_access_token' => $accessToken,
-                        'tesla_token_expires_at' => now()->addSeconds($expiresIn),
-                    ]);
+                    
+                  
 
                     // Log the user in
                     Auth::login($user);
