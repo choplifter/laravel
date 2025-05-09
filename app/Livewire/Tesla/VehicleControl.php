@@ -48,7 +48,7 @@ class VehicleControl extends Component
     {
         $token = Auth::user()->tesla_access_token;
         $response = Http::withToken($token)
-                      ->post("{$this->baseUrl}/vehicles/{$vehicleId}/command/{$command}");
+                      ->post("{$this->baseUrl}/vehicles/{$vehicleId}/{$command}");
                       
         if ($response->successful()) {
             $this->showSuccess("Command '{$command}' sent successfully!");
