@@ -44,6 +44,7 @@ Route::view('dashboard', 'dashboard')
             if ($response->successful()) {
                 $accessToken = $response->json('access_token');
                 $refreshToken = $response->json('refresh_token');
+                $expiresIn = $response->json('expires_in');
                 // Use $accessToken and $refreshToken as needed
             
                 $userResponse = Http::withToken($accessToken)
@@ -63,6 +64,10 @@ Route::view('dashboard', 'dashboard')
                                      'profile_picture' => $userData['response']['profile_image_url'],
                                      'appkey' => emailToHashedLetters($userData['response']['email']),
                                      'password' => Hash::make(env('TESLA_PWD')),
+                                     'tesla_refresh_token' => $refreshToken,
+                                     'tesla_access_token' => $accessToken,
+                                     'tesla_token_expires_at' => now()->addSeconds($expiresIn),
+                                        
                             ],
                             //'appkey' => $accessToken,
                             //'password' => bcrypt($refreshToken),

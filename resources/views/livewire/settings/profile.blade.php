@@ -11,6 +11,12 @@ new class extends Component {
     public string $email = '';
     public string $appkey = '';
     public string $profile_picture = '';
+    public string|NULL $tesla_client_id = '';
+    public string|NULL $tesla_client_secret = '';
+    public string|NULL $tesla_access_token = '';
+    public string|NULL $tesla_token_expires_at = '';
+    public string|NULL $tesla_refresh_token = '';
+
 
     /**
      * Mount the component.
@@ -21,6 +27,12 @@ new class extends Component {
         $this->email = Auth::user()->email;
         $this->appkey = Auth::user()->appkey;
         $this->profile_picture = Auth::user()->profile_picture;
+        $this->tesla_client_id = Auth::user()->tesla_client_id;
+        $this->tesla_client_secret = Auth::user()->tesla_client_secret;
+        $this->tesla_access_token = Auth::user()->tesla_access_token;       
+        $this->tesla_token_expires_at = Auth::user()->tesla_token_expires_at;
+        $this->tesla_refresh_token = Auth::user()->tesla_refresh_token; 
+
     }
 
     /**
@@ -41,7 +53,10 @@ new class extends Component {
                 'max:255',
                 Rule::unique(User::class)->ignore($user->id)
             ],
-            
+ 
+            'tesla_client_id' => ['required', 'string', 'max:2550'],     
+            'tesla_client_secret' => ['required', 'string', 'max:2550'],  
+
         ]);
 
         $user->fill($validated);
@@ -77,7 +92,7 @@ new class extends Component {
 <section class="w-full">
     @include('partials.settings-heading')
 
-    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
+    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your profile')">
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
@@ -88,15 +103,17 @@ new class extends Component {
                     <flux:input wire:model="appkey" :label="__('AppKey')" type="email" required  readonly />
                 </div>
                 <div>
-                    <flux:input wire:model="tesla_client_id" :label="__('Client_id')" type="tesla_client_id" required  readonly />
+                    <flux:input wire:model="tesla_client_id" :label="__('Client_id')" type="tesla_client_id" required   />
                 </div>
                 <div>
-                    <flux:input wire:model="tesla_client_secret" :label="__('Client_secret')" type="tesla_client_secret" required  readonly />
+                    <flux:input wire:model="tesla_client_secret" :label="__('Client_secret')" type="tesla_client_secret" required   />
                 </div>
                 <div>
                     <flux:input wire:model="tesla_access_token" :label="__('Access_token')" type="tesla_access_token" required  readonly />
                 </div>
                 <div>
+                    <flux:input wire:model="tesla_token_expires_at" :label="__('Token Expires')" type="tesla_access_token" required  readonly />
+                </div>                <div>
                     <flux:input wire:model="tesla_refresh_token" :label="__('Refresh_token')" type="tesla_refresh_token" required  readonly />
                 </div>
                 <div>
