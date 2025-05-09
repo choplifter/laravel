@@ -54,9 +54,12 @@ new class extends Component {
                 Rule::unique(User::class)->ignore($user->id)
             ],
  
+            'profile_picture' => ['required', 'string', 'max:2550'],
             'tesla_client_id' => ['required', 'string', 'max:2550'],     
             'tesla_client_secret' => ['required', 'string', 'max:2550'],  
-
+            'tesla_access_token' => ['required', 'string', 'max:2550'],  
+            'tesla_token_expires_at' => ['required', 'string', 'max:2550'],  
+            'tesla_refresh_token' => ['required', 'string', 'max:2550'],
         ]);
 
         $user->fill($validated);
