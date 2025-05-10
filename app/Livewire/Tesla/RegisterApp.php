@@ -76,5 +76,12 @@ new class extends Component {
             session()->flash('error', 'Fleet API registration failed: ' . $e->getMessage());
         }
     }
+
+    public function render()
+    {
+        return view('livewire.tesla.registerapp');
+    }
 };
-?>
+
+
+
