@@ -1,9 +1,9 @@
 <?php
+namespace App\Livewire\Tesla;
 
+use Livewire\Component;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Volt\Component;
 
 new class extends Component {
     public string $name = '';
