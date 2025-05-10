@@ -4,6 +4,8 @@ namespace App\Livewire\Tesla;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 new class extends Component {
     public string $name = '';
@@ -65,7 +67,7 @@ new class extends Component {
             ]);
 
             if (!$response->successful()) {
-                Log::error('Fleet API registration failed: ' . $response->body());
+                //Log::error('Fleet API registration failed: ' . $response->body());
                 throw new \Exception('Failed to register with Fleet API: ' . $response->body());
             }
 
