@@ -7,10 +7,10 @@
 
         <flux:input wire:model="appkey" :label="__('AppKey')" type="text" readonly />
 
-        <button wire:click="registerWithFleetAPI"
-             class="w-full">
+        <flux:button variant="danger" type="submit" class="w-full" wire:click="registerWithFleetAPI"
+            >
             {{ __('Register with Fleet API') }}
-        </button>
+        </flux:button>
 
         @if (session('success'))
             <div class="text-green-500">{{ session('success') }}</div>
