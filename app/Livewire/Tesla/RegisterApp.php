@@ -81,7 +81,7 @@ class RegisterApp extends Component {
 
     public function render()
     {
-        return view('livewire.tesla.registerapp');
+        return view('livewire.tesla.regapp');
     }
 };
 
