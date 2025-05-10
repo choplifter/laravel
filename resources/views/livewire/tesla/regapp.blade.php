@@ -7,7 +7,8 @@
 
         <flux:input wire:model="appkey" :label="__('AppKey')" type="text" readonly />
 
-        <button wire:click="registerWithFleetAPI">click</button>
+        <button wire:click="registerWithFleetAPI"
+             class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600>
             {{ __('Register with Fleet API') }}
         </button>
 
