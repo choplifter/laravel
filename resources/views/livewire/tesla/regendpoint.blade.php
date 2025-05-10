@@ -10,6 +10,9 @@ new class extends Component {
     public string $email = '';
     public string $appkey = '';
     public string $profile_picture = '';
+    public string $tesla_client_id = '';
+    public string $tesla_client_secret = '';
+    public string $tesla_access_token = '';
 
     /**
      * Mount the component.
@@ -17,8 +20,10 @@ new class extends Component {
     public function mount(): void
     {
         $user = Auth::user();
-        $this->appkey = $user->appkey;
-        $this->tesla_access_token = $user->tesla_access_token;
+        $this->appkey = $user->appkey ?? '';
+        $this->tesla_access_token = $user->tesla_access_token ?? '';
+        $this->tesla_client_id = $user->tesla_client_id ?? '';
+        $this->tesla_client_secret = $user->tesla_client_secret ?? '';
     }
 
     /**
@@ -26,13 +31,13 @@ new class extends Component {
      */
     private function generatePartnerToken(): string
     {
-        $user = Auth::user();
-        $response = Http::post('https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token', [
-            'content_type' => 'application/x-www-form-urlencoded',
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/x-www-form-urlencoded',
+        ])->post('https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token', [
             'grant_type' => 'client_credentials',
-            'client_id' => $user->tesla_client_id,
-            'client_secret' => $user->tesla_client_secret,
-            'scope' => 'openid vehicle_device_data vehicle_cmds vehicle_charging_cmds',      
+            'client_id' => $this->tesla_client_id,
+            'client_secret' => $this->tesla_client_secret,
+            'scope' => 'openid vehicle_device_data vehicle_cmds vehicle_charging_cmds',
             'audience' => 'https://fleet-api.prd.vn.cloud.tesla.com',
         ]);
 
@@ -41,7 +46,7 @@ new class extends Component {
         }
 
         Log::error('Failed to generate partner token: ' . $response->body());
-        throw new \Exception('Failed to generate partner token.');
+        throw new \Exception('Failed to generate partner token: ' . $response->body());
     }
 
     /**
@@ -52,27 +57,27 @@ new class extends Component {
         try {
             $token = $this->generatePartnerToken();
 
-            $response = Http::withToken($token)->post('https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/partner_accounts', [
-                'content_type' => 'application/json',
-                'domain' => 'kindlbacher.de',
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $token,
+            ])->post('https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/partner_accounts', [
+                'domain' => request()->getHost(), // Dynamische Domain basierend auf der aktuellen URL
             ]);
 
             if (!$response->successful()) {
                 Log::error('Fleet API registration failed: ' . $response->body());
-                throw new \Exception('Failed to register with Fleet API.');
+                throw new \Exception('Failed to register with Fleet API: ' . $response->body());
             }
 
             Log::info('Successfully registered with Fleet API: ' . $response->body());
             session()->flash('success', 'Successfully registered with Fleet API.');
         } catch (\Exception $e) {
-            session()->flash('error', 'Fleet API registration failed. Please try again later.');
+            Log::error('Fleet API registration error: ' . $e->getMessage());
+            session()->flash('error', 'Fleet API registration failed: ' . $e->getMessage());
         }
     }
 };
 ?>
-
-
- 
 
 
 
