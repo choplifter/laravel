@@ -68,13 +68,14 @@ new class  extends Component {
             session()->flash('error', 'Fleet API registration failed. Please try again later.');
         }
     }
-
+?>
     /**
      * Render the component.
      */
-    public function render(): mixed
-    {
-        return <<<'blade'
+
+ <section class="w-full">
+    @include('partials.settings-heading')
+
         <div class="container mx-auto px-4 py-8">
             <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">
                 {{ __('Fleet API Registration') }}
@@ -97,6 +98,6 @@ new class  extends Component {
                 @endif
             </div>
         </div>
-        blade;
-    }
-};
+      </x-settings.layout>
+</section>
+ 
