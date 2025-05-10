@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 
-new class extends Component {
+class RegisterApp extends Component {
     public string $name = '';
     public string $email = '';
     public string $appkey = '';
