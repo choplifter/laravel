@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Volt\Component;
 
-new class extends Component {
+new class  extends Component {
     public string $name = '';
     public string $email = '';
     public string $appkey = '';
