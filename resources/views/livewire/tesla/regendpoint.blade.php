@@ -68,6 +68,7 @@ new class  extends Component {
             session()->flash('error', 'Fleet API registration failed. Please try again later.');
         }
     }
+}
 ?>
     /**
      * Render the component.
