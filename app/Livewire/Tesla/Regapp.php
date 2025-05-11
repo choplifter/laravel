@@ -77,7 +77,7 @@ class RegApp extends Component {
             session()->flash('success', 'Successfully registered with Fleet API.');
             $this->showSuccess("Successfully registered with Fleet API.");
         } catch (\Exception $e) {
-            $this->showError("Error registring API: " . $response->json('reason', 'Unknown error'));
+            $this->showError("Error registring API: " . $e->getMessage());
             Log::error('Fleet API registration error: ' . $e->getMessage());
             session()->flash('error', 'Fleet API registration failed: ' . $e->getMessage());
         }
