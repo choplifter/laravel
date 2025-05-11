@@ -67,9 +67,10 @@ class VehicleControl extends Component
 
         if ($response->status() === 401) { // Token is invalid or expired
             $refreshToken = Auth::user()->tesla_refresh_token;
+            $clientId = Auth::user()->tesla_client_id;
             $refreshResponse = Http::post("https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token", [
                 'grant_type' => 'refresh_token',
-                'client_id' => config('services.tesla.client_id'),
+                'client_id' => $clientId,
                 'refresh_token' => $refreshToken,
             ]);
 
