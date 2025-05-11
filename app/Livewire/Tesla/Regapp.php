@@ -44,7 +44,7 @@ class RegApp extends Component {
         if ($response->successful()) {
             
             $this->showSuccess("Partner token received successfully!");
-            return $response->json();
+            return $response->json()['access_token'];
         }
 
         Log::error('Failed to generate partner token: ' . $response->body());
