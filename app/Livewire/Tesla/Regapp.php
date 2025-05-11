@@ -33,9 +33,7 @@ class RegApp extends Component {
      */
     private function generatePartnerToken(): string
     {
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/x-www-form-urlencoded',
-        ])->post('https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token', [
+        $response = Http::post('https://fleet-auth.prd.vn.cloud.tesla.com/oauth2/v3/token', [
             'grant_type' => 'client_credentials',
             'client_id' => $this->tesla_client_id,
             'client_secret' => $this->tesla_client_secret,
