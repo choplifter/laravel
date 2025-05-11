@@ -56,6 +56,9 @@ class RegApp extends Component {
      */
     public function registerWithFleetAPI(): void
     {
+        
+        $this->showSuccess('Requesting Fleet API registration...');
+
         try {
             $token = $this->generatePartnerToken();
 

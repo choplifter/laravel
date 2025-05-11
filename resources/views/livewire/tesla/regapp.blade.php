@@ -1,11 +1,4 @@
 <div>
-    @if ($message)
-        <div
-            class="{{ $messageType === 'success' ? 'bg-green-100 border-green-400 text-green-700' : 'bg-red-100 border-red-400 text-red-700' }} px-4 py-3 rounded relative mb-4">
-            {{ $message }}
-        </div>
-    @endif
-
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">
             {{ __('Fleet API Registration') }}
@@ -28,4 +21,10 @@
             @endif
         </div>
     </div>
+    @if ($message)
+        <div
+            class="{{ $messageType === 'success' ? 'bg-green-100 border-green-400 text-green-700' : 'bg-red-100 border-red-400 text-red-700' }} px-4 py-3 rounded relative mb-4">
+            {{ $message }}
+        </div>
+    @endif
 </div>
