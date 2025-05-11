@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 
-class RegApp extends Component {
+new class extends Component {
     
     public string $appkey = '';
     public string $profile_picture = '';
