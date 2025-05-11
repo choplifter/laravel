@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Log;
 
 
 class RegApp extends Component {
-    public string $name = '';
-    public string $email = '';
+    
     public string $appkey = '';
     public string $profile_picture = '';
     public string $tesla_client_id = '';
     public string $tesla_client_secret = '';
     public string $tesla_access_token = '';
-
+    public $message = '';
+    public $messageType = 'success';
     /**
      * Mount the component.
      */
@@ -44,7 +44,9 @@ class RegApp extends Component {
         ]);
 
         if ($response->successful()) {
-            return $response->json()['access_token'];
+            
+            $this->showSuccess("Partner token received successfully!");
+            return $response->json();
         }
 
         Log::error('Failed to generate partner token: ' . $response->body());
@@ -73,12 +75,24 @@ class RegApp extends Component {
 
             Log::info('Successfully registered with Fleet API: ' . $response->body());
             session()->flash('success', 'Successfully registered with Fleet API.');
+            $this->showSuccess("Successfully registered with Fleet API.");
         } catch (\Exception $e) {
+            $this->showError("Error registring API: " . $response->json('reason', 'Unknown error'));
             Log::error('Fleet API registration error: ' . $e->getMessage());
             session()->flash('error', 'Fleet API registration failed: ' . $e->getMessage());
         }
     }
-
+    private function showSuccess($message)
+    {
+        $this->message = $message;
+        $this->messageType = 'success';
+    }
+    
+    private function showError($message)
+    {
+        $this->message = $message;
+        $this->messageType = 'error';
+    }
     public function render()
     {
         return view('livewire.tesla.regapp');
