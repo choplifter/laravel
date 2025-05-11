@@ -70,12 +70,12 @@ new class extends Component {
             ]);
 
             if (!$response->successful()) {
-                Log::error('Fleet API registration failed: ' . $response->body());
+                //Log::error('Fleet API registration failed: ' . $response->body());
                 throw new \Exception('Failed to register with Fleet API: ' . $response->body());
             }
 
             Log::info('Successfully registered with Fleet API: ' . $response->body());
-            session()->flash('success', 'Successfully registered with Fleet API.');
+            //session()->flash('success', 'Successfully registered with Fleet API.');
             $this->showSuccess("Successfully registered with Fleet API.");
         } catch (\Exception $e) {
             $this->showError("Error registring API: " . $e->getMessage());
