@@ -38,7 +38,7 @@ class RegApp extends Component {
             'client_id' => $this->tesla_client_id,
             'client_secret' => $this->tesla_client_secret,
             'scope' => 'openid vehicle_device_data vehicle_cmds vehicle_charging_cmds',
-            'audience' => 'https://fleet-api.prd.vn.cloud.tesla.com',
+            'audience' => 'https://fleet-api.prd.eu.vn.cloud.tesla.com',
         ]);
 
         if ($response->successful()) {
