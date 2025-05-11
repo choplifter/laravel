@@ -12,7 +12,9 @@ class VehicleControl extends Component
     public $message = '';
     public $messageType = 'success';
     
-    protected $baseUrl = 'https://fleet-api.prd.eu.vn.cloud.tesla.com/api/1';
+    //protected $baseUrl = 'https://fleet-api.prd.eu.vn.cloud.tesla.com/api/1';
+    protected $baseUrl = 'https://localhost:4443/api/1';
+
     protected $proxyUrl = "localhost:4443";
     
     public function mount()
