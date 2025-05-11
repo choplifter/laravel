@@ -11,8 +11,10 @@
                 <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-4">
                     <h2 class="font-semibold">{{ $vehicle['vin'] }}</h2>
                     <p>Status: <span>{{ $vehicle['state'] }}</span></p>
-                    <p>Battery Level: {{ $vehicle['battery_level'] ?? 'N/A' }}%</p>
-                    
+                    <p>Battery Level: {{ $vehicle['data']['charge_state']['battery_level'] ?? 'N/A' }}%</p>
+                    <p>Charge Amps: {{ $vehicle['data']['charge_state']['charge_amps'] ?? 'N/A' }}%</p>
+                    <p>Charging State: {{ $vehicle['data']['charge_state']['charging_state'] ?? 'N/A' }}%</p>
+                   
                     <div class="flex flex-wrap gap-2 mt-4">
                         <button wire:click="sendCommand('{{ $vehicle['vin'] }}', 'wake_up')" 
                                 class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
