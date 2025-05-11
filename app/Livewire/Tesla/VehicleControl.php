@@ -82,6 +82,7 @@ class VehicleControl extends Component
                 $user = Auth::user();
                 $user->tesla_access_token = $newToken;
                 $user->tesla_refresh_token = $newRefreshToken;
+                $user->tesla_token_expires_at = now()->addSeconds($refreshResponse->json('expires_in'));
                 $user->save();
             } else {
                 $this->showError("Failed to refresh token: " . $refreshResponse->json('error', 'Unknown error'));
