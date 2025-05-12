@@ -51,15 +51,30 @@ class VehicleControl extends Component
     public function sendCommand($vehicleId, $command)
     {
         $token = Auth::user()->tesla_access_token;
-        $response = Http::withToken($token)
-                      ->post("{$this->baseUrl}/vehicles/{$vehicleId}/{$command}");
-                      
-        if ($response->successful()) {
+        $url = "{$this->baseUrl}/vehicles/{$vehicleId}/{$command}";
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization: Bearer ' . $token,
+            'Content-Type: application/json',
+            'Accept: application/json',
+        ));
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode >= 200 && $httpCode < 300) {
             $this->showSuccess("Command '{$command}' sent successfully!");
             // Refresh vehicle data after command
             $this->fetchVehicles();
         } else {
-            $this->showError("Error sending command: " . $response->json('reason', 'Unknown error'));
+            $responseBody = json_decode($response, true);
+            $errorReason = $responseBody['reason'] ?? 'Unknown error';
+            $this->showError("Error sending command: " . $errorReason);
         }
     }
     private function checkAndRefreshToken()
