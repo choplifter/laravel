@@ -47,8 +47,23 @@ class VehicleControl extends Component
             }
         }
     }
-    
-    public function sendCommand($vehicleId, $command)
+     public function sendCommand($vehicleId, $command)
+    {
+        $token = Auth::user()->tesla_access_token;
+        $response = Http::withToken($token)
+                  ->withOptions(['verify' => false])
+                  ->post("{$this->baseUrl}/vehicles/{$vehicleId}/{$command}");
+                      
+        if ($response->successful()) {
+            $this->showSuccess("Command '{$command}' sent successfully!");
+            // Refresh vehicle data after command
+            $this->fetchVehicles();
+        } else {
+            $this->showError("Error sending command: " . $response->json('reason', 'Unknown error'));
+        }
+    }
+        
+    public function curlsendCommand($vehicleId, $command)
     {
         $token = Auth::user()->tesla_access_token;
         $url = "{$this->baseUrl}/vehicles/{$vehicleId}/{$command}";
