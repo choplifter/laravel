@@ -94,6 +94,12 @@ class VehicleControl extends Component
     }
     private function checkAndRefreshToken()
     {
+
+        $tokenExpiresAt = Auth::user()->tesla_token_expires_at;
+        if ($tokenExpiresAt && !now()->greaterThan($tokenExpiresAt)) {
+            return;
+        }
+        // Token is expired or not set, refresh it
         $token = Auth::user()->tesla_access_token;
         $response = Http::withToken($token)->get("{$this->baseUrl}/vehicles");
 
