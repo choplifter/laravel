@@ -47,7 +47,7 @@ class VehicleControl extends Component
             }
         }
     }
-     public function sendCommand($vehicleId, $command)
+     public function httpsendCommand($vehicleId, $command)
     {
         $token = Auth::user()->tesla_access_token;
         $response = Http::withToken($token)
@@ -62,8 +62,8 @@ class VehicleControl extends Component
             $this->showError("Error sending command: " . $response->json('reason', 'Unknown error'));
         }
     }
-        
-    public function curlsendCommand($vehicleId, $command)
+
+    public function sendCommand($vehicleId, $command)
     {
         $token = Auth::user()->tesla_access_token;
         $url = "{$this->baseUrl}/vehicles/{$vehicleId}/{$command}";
